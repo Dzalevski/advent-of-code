@@ -102,12 +102,15 @@ func partTwo(input []string) int {
 			for _, colorsSet := range colorsSets {
 				parts := strings.Fields(colorsSet)
 				color := parts[1]
-				value := 0
-				if v, err := strconv.Atoi(parts[0]); err == nil {
-					value = v
+				colorNumberStr := parts[0]
+
+				colorNumber, err := strconv.Atoi(colorNumberStr)
+				if err != nil {
+					fmt.Println(fmt.Errorf("failed to parse color number string: %w", err))
+					return 0
 				}
-				if value > colorCounts[color] {
-					colorCounts[color] = value
+				if colorNumber > colorCounts[color] {
+					colorCounts[color] = colorNumber
 				}
 			}
 		}
