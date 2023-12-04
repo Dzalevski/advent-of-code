@@ -81,6 +81,7 @@ func partOne(lines []string) int {
 	return sum
 }
 
+// the name of the Island is Island? hmm I wonder if that's a clue
 func pow(n int) int {
 	if n == 1 {
 		return 1
