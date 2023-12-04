@@ -96,11 +96,11 @@ func partTwo(lines []string) int {
 
 	for _, line := range lines {
 		winningNumbers := make(map[int]bool)
-		numbersOnly := strings.Split(line, ": ")
-		numbers := strings.Split(numbersOnly[1], " | ")
+		cards := strings.Split(line, ": ")
+		numbers := strings.Split(cards[1], " | ")
 		re := regexp.MustCompile(`\d+`)
 
-		allNumbers, err := strconv.Atoi(re.FindString(numbersOnly[0]))
+		allNumbers, err := strconv.Atoi(re.FindString(cards[0]))
 		if err != nil {
 			fmt.Println(err.Error())
 		}
