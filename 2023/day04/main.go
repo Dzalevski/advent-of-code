@@ -100,11 +100,11 @@ func partTwo(lines []string) int {
 		numbers := strings.Split(numbersOnly[1], " | ")
 		re := regexp.MustCompile(`\d+`)
 
-		elfNumbers, err := strconv.Atoi(re.FindString(numbersOnly[0]))
+		allNumbers, err := strconv.Atoi(re.FindString(numbersOnly[0]))
 		if err != nil {
 			fmt.Println(err.Error())
 		}
-		processCount[elfNumbers]++
+		processCount[allNumbers]++
 
 		winningNums := re.FindAllString(numbers[0], -1)
 
@@ -116,11 +116,11 @@ func partTwo(lines []string) int {
 			winningNumbers[v] = true
 		}
 
-		lotteryNums := re.FindAllString(numbers[1], -1)
+		elfNumbers := re.FindAllString(numbers[1], -1)
 
 		var count int
 
-		for _, n := range lotteryNums {
+		for _, n := range elfNumbers {
 			v, err := strconv.Atoi(n)
 			if err != nil {
 				fmt.Println(err.Error())
@@ -129,7 +129,7 @@ func partTwo(lines []string) int {
 
 			if ok {
 				count++
-				processCount[elfNumbers+count] += processCount[elfNumbers]
+				processCount[allNumbers+count] += processCount[allNumbers]
 			}
 		}
 	}
